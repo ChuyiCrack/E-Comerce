@@ -16,6 +16,7 @@ class Cart:
         # store current applied coupon
         self.coupon_id = self.session.get('coupon_id')
         self.cart = cart
+        self.language =request.LANGUAGE_CODE
 
     def add(self, product, quantity=1, override_quantity=False):
         """
@@ -54,8 +55,9 @@ class Cart:
         """
         product_ids = self.cart.keys()
         # get the product objects and add them to the cart
-        products = Product.objects.filter(id__in=product_ids)
+        products = Product.objects.filter(id__in=product_ids,translations__language_code=self.language)
         cart = self.cart.copy()
+        print(products)
         for product in products:
             cart[str(product.id)]['product'] = product
         for item in cart.values():

@@ -31,6 +31,8 @@ def cart_remove(request, product_id):
 
 def cart_detail(request):
     cart = Cart(request)
+    for c in cart:
+        print(c)
     coupon_apply_form = CouponApplyForm()
     r = Recommender()
     cart_products = [item['product'] for item in cart]

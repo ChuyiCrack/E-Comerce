@@ -31,5 +31,12 @@ def stripe_webhook(request):
             # mark order as paid
             order.stripe_id = session.payment_intent
             order.paid = True
+            
+            # save items bought for product recommendations
+            product_ids = order.items.values_list('product_id')
+            products = Product.objects.filter(id__in=product_ids)
+            r = Recommender()
+            r.products_bought(products) 
+            
             order.save()
     return HttpResponse(status=200)

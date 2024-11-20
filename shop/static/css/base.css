@@ -173,26 +173,42 @@ ul.errorlist {
     border-radius:4px;
 }
 
+.selected{
+    color: #48739a;
+}
+
 #sidebar ul li.selected a {
     color:#fff;
 }
 
 #main {
     float:left;
-    width: 96%;
+    width: 85%;
     margin-right:-220px;
     overflow:hidden;
 }
 
-.product-list .item {
-    width:25%;
-    padding:10px 20px 10px 0;
+
+.listProducts{
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+}
+
+.mainMain{
+    display: flex;
+    flex-direction: row;
+}
+
+.product-list .listProducts .item {
+    width:350px;
+    padding:10px 0px;
     float:left;
     text-align:center;
     line-height:1.2;
 }
 
-.product-list .item img {
+.product-list .listProducts .item img {
     width:100%;
     margin-bottom:8px;
 }

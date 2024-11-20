@@ -2,6 +2,7 @@
 
 import django.db.models.deletion
 from django.db import migrations, models
+import parler.models
 
 
 class Migration(migrations.Migration):
@@ -25,6 +26,7 @@ class Migration(migrations.Migration):
                 'ordering': ['name'],
                 'indexes': [models.Index(fields=['name'], name='shop_catego_name_289c7e_idx')],
             },
+            bases=(parler.models.TranslatableModelMixin, models.Model),
         ),
         migrations.CreateModel(
             name='Product',
@@ -44,5 +46,6 @@ class Migration(migrations.Migration):
                 'ordering': ['name'],
                 'indexes': [models.Index(fields=['id', 'slug'], name='shop_produc_id_f21274_idx'), models.Index(fields=['name'], name='shop_produc_name_a2070e_idx'), models.Index(fields=['-created'], name='shop_produc_created_ef211c_idx')],
             },
+            bases=(parler.models.TranslatableModelMixin, models.Model),
         ),
     ]
