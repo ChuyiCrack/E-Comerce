@@ -28,11 +28,11 @@
     </tr>
     <tr>
       <th>Customer</th>
-      <td>{{ order.first_name }} {{ order.last_name }}</td>
+      <td>{{ order.account.name}} {{ order.account.lastName }}</td>
     </tr>
     <tr>
       <th>E-mail</th>
-      <td><a href="mailto:{{ order.email }}">{{ order.email }}</a></td>
+      <td><a href="mailto:{{ order.email }}">{{ order.account.email }}</a></td>
     </tr>
     <tr>
       <th>Address</th>

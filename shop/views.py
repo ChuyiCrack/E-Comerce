@@ -9,7 +9,7 @@ from django.utils.translation import gettext as _
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
-    products = Product.objects.exclude(id=17)
+    products = Product.objects.exclude()
     if category_slug:
         language = request.LANGUAGE_CODE
         category = get_object_or_404(Category,

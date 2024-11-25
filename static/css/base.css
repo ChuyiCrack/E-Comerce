@@ -69,7 +69,7 @@ thead th, tbody tr.total {
 }
 
 table.cart {
-    margin-bottom:40px;
+    margin-bottom:15px;
 }
 
 table.cart img {
@@ -138,6 +138,8 @@ ul.errorlist {
 }
 
 #subheader .cart {
+    display: flex;
+    align-items: center;
     float:right;
     padding-top:4px;
 }
@@ -173,26 +175,42 @@ ul.errorlist {
     border-radius:4px;
 }
 
+.selected{
+    color: #48739a;
+}
+
 #sidebar ul li.selected a {
     color:#fff;
 }
 
 #main {
     float:left;
-    width: 96%;
+    width: 85%;
     margin-right:-220px;
     overflow:hidden;
 }
 
-.product-list .item {
-    width:25%;
-    padding:10px 20px 10px 0;
+
+.listProducts{
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+}
+
+.mainMain{
+    display: flex;
+    flex-direction: row;
+}
+
+.product-list .listProducts .item {
+    width:350px;
+    padding:10px 0px;
     float:left;
     text-align:center;
     line-height:1.2;
 }
 
-.product-list .item img {
+.product-list .listProducts .item img {
     width:100%;
     margin-bottom:8px;
 }
@@ -291,7 +309,7 @@ ul.errorlist {
 .languages {
    float:right;
    padding-top:4px;
-   font-size:14px;
+   font-size:16px;
 }
 
 .languages ul {
@@ -304,7 +322,7 @@ ul.errorlist {
 .languages ul li {
     float:left;
     margin:0 0 0 10px;
-    font-size:14px;
+    font-size:16px;
 }
 
 .languages p {
@@ -329,7 +347,7 @@ ul.errorlist {
 }
 
 .recommendations.cart {
-    width:60%;
+    width:fit-content;
     float:left;
     overflow:auto;
 }
@@ -339,7 +357,8 @@ ul.errorlist {
 }
 
 .recommendations.cart .item {
-    margin-right:10px;
+    margin-right:50px;
+    text-align: center;
 }
 
 .recommendations.cart img {
@@ -358,4 +377,78 @@ form div.field {
     background:#efefef;
     color:#666;
     border-radius:4px;
+}
+
+/* Cuopons on cart */
+.couponBox{
+    text-align: center;
+    display: flex;
+    margin-left: auto;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.couponBox p{
+    margin: 0;
+}
+
+.couponForm{
+    display: flex;
+    flex-direction: row;
+    
+    align-items: center;
+}
+
+.couponForm #submitCoupoun{
+    padding: 8px;
+    margin-left: 5px;
+}
+
+.couponForm input:not(#submitCoupoun){
+    width: 150px;
+}
+
+.subMainCartBox{
+    
+    width: fit-content;
+}
+
+.mainCartBox{
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    justify-content: space-between;
+}
+
+/* Profile stuff */
+.Profile{
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.Profile img{
+    width: 30px;
+    height: 30px;
+    
+}
+
+.logginButton{
+    margin-left: 10px;
+    padding: 2px 5px;
+    border-radius: 10px;
+    border: 2px solid #000;
+    background-color: #5486b4;
+    color: #fff;
+}
+
+
+.logginButton:hover{
+    background-color: #436d94;
+    color: #fff;
+}
+
+
+
+.orderBox{
+    background-color: red;
 }

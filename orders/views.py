@@ -5,12 +5,15 @@ from django.contrib.admin.views.decorators import staff_member_required
 from .models import Order
 from django.contrib.staticfiles import finders
 from django.http import HttpResponse
-from django.template.loader import render_to_string
+from django.contrib.auth.decorators import login_required
 
 from .forms import OrderCreateForm
 from .models import OrderItem
+
+@login_required
 def order_create(request):
     cart = Cart(request)
+    user = request.user
     if request.method == 'POST':
         form = OrderCreateForm(request.POST) #Retrieve all the data to create a new Instance
         if form.is_valid(): #Check if nothing is missing
@@ -18,6 +21,7 @@ def order_create(request):
             if cart.coupon:
                 order.coupon = cart.coupon
                 order.discount = cart.coupon.discount
+            order.account = user
             order.save()
             for item in cart:
                 OrderItem.objects.create(
@@ -56,6 +60,14 @@ def admin_order_detail(request, order_id):
 def admin_order_pdf(request, order_id):
     order = get_object_or_404(Order, id=order_id)
     return render(request , 'orders/order/pdf.html' , {'order':order})
+
+@login_required
+def orderDetail(request , orderId):
+    order = get_object_or_404(Order, id=orderId)
+    context = {
+        'order':order
+    }
+    return render(request,'orders/order/orderDetail.html',context)
 
 
 # @staff_member_required

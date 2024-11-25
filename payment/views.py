@@ -4,13 +4,18 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from orders.models import Order,OrderItem
+from django.contrib.auth.decorators import login_required
 # create the Stripe instance
 stripe.api_key = settings.STRIPE_SECRET_KEY
 stripe.api_version = settings.STRIPE_API_VERSION
 
-def payment_process(request):
-    order_id = request.session.get('order_id')
+@login_required
+def payment_process(request,orderLate = None):
+    order_id = request.session.get('order_id') if orderLate == None else orderLate
     order = get_object_or_404(Order, id=order_id)
+    if order.account != request.user or order.paid:
+        return redirect("shop:product_list")
+    
     if request.method == 'POST':
         success_url = request.build_absolute_uri(
             reverse('payment:completed')
@@ -56,10 +61,11 @@ def payment_process(request):
         return redirect(session.url, code=303)
     else:
         return render(request, 'payment/process.html', locals())
-    
+
+@login_required   
 def payment_completed(request):
     return render(request, 'payment/completed.html')
-
+@login_required
 def payment_canceled(request):
     return render(request, 'payment/canceled.html')
 

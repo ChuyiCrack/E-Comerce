@@ -1,0 +1,93 @@
+{% extends "shop/base.html" %}
+{% load static i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{user.name}} {{user.lastName}}</title>
+    <link rel="stylesheet" href="{% static 'css/test.css' %}">
+</head>
+    {% block content %}
+    <body>
+    <h1>
+            {% blocktrans with name=user.name lastName=user.lastName %}
+                Hello, {{name}} {{lastName}}
+            {% endblocktrans %}
+    </h1>
+    <div class="titles">
+        <h2>{% translate "Your Orders" %}</h2>
+        <h2 id="account">{% translate "Account" %}</h2>
+    </div>
+        <div class="mainBox">
+            <div class="mainOrderBox">
+                {% for order in orders %}
+                    <a href="{% url 'orders:orderDetail' order.0.id %}" class="orderBox">
+                        <div class="header">
+                            <div class="innerHeaderBox">
+                                <p>
+                                    {% blocktrans with id=order.0.id %}
+                                            Order ID: {{id}}
+                                    {% endblocktrans %}
+                                </p>
+                                <p>total: ${{order.0.get_total_cost}}</p>
+                            </div>
+                            <div class="innerHeaderBox">
+                                {% if order.0.paid %}
+                                    <p>{% blocktrans with city=order.0.city%}
+                                        Shipped to: {{city}}
+                                    {% endblocktrans %}</p>
+                                {% else %}
+                                    <form class="deleteOrder" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" name="deleteOrder" value="{{order.0.id}}">delete</button>
+                                    </form>
+                                {% endif %}
+                                
+
+                            </div>
+                        </div>
+                        <div class="bodyOrder">
+                            <div class="imagesOrder">
+                                {% for product in order.1 %}
+                                    <img id="productImage" src="{{product.image.url}}" alt="">
+                                {% endfor %}
+                                {% if order.2 %}
+                                    <div class="extraProduct">
+                                        <span class="plusSign">&#43;</span> 
+                                    </div>
+                                {% endif%}
+                            </div>
+                            <div class="statusBox">
+                                <b style="font-size: 12px;">Status</b>
+                                <div class="status">
+                                {% if order.0.paid %}
+                                    <div class="circleStatus paid"></div>
+                                    <p>Paid</p>
+                                {% else %}
+                                    <div class="circleStatus noPaid"></div>
+                                    <p>Pending</p>
+                                    <form action="{% url "payment:processWithParameter" order.0.id %}">
+                                        <button class="payButtonProfile" type="submit">Pay</button>
+                                    </form>
+                                {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        <div class="boxForm">
+            <form class="editForm" method="post">
+                {% csrf_token %}
+                <label for="emailEditForm"">Email</label>
+                <p title="{% translate "You can't modify your email" %}" id="emailEditForm">{{user.email}}</p>
+                {{editForm}}
+                <button class="editFormButton" type="submit" name="editAccount">Edit</button>
+            </form>
+        </div>
+    </div>
+    </body>
+    {% endblock %}
+</html>

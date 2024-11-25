@@ -103,7 +103,11 @@
         <p class="text-right">
           <a href="{% url "shop:product_list" %}" class="button
           light">{% translate 'Continue shopping' %}</a>
-          <a href="{% url "orders:order_create" %}" class="button">{% translate 'Checkout' %}</a>
+          {% if authenticated %}
+              <a href="{% url "orders:order_create" %}" class="button">{% translate 'Checkout' %}</a>
+          {% else %}
+              <a href="{% url "authuser:login" %}">Login for Checkout</a>
+          {% endif %}
         </p>
     </div>
   </div>

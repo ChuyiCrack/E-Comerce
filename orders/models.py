@@ -4,11 +4,10 @@ from coupons.models import Coupon
 from django.core.validators import MaxValueValidator, MinValueValidator
 from decimal import Decimal
 from django.utils.translation import gettext_lazy as _
+from authuser.models import User
 
 class Order(models.Model):
-    first_name = models.CharField(_('first name'),max_length=50)
-    last_name = models.CharField(_('last_name'),max_length=50)
-    email = models.EmailField(_('email'))
+    account = models.ForeignKey(User , blank=False , on_delete=models.CASCADE)
     address = models.CharField(_('address'),max_length=250)
     postal_code = models.CharField(_('postal_code'),max_length=20)
     city = models.CharField(_('city'),max_length=100) #Wirh the first paramete we aretranslating the model
@@ -18,7 +17,6 @@ class Order(models.Model):
     stripe_id = models.CharField(max_length=250, blank=True)
     coupon = models.ForeignKey(
         Coupon,
-        related_name='orders',
         null=True,
         blank=True,
         on_delete=models.SET_NULL

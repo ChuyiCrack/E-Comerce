@@ -61,9 +61,7 @@ order_pdf.short_description = 'Invoice'
 class OrderAdmin(admin.ModelAdmin):
     list_display = [
         'id',
-        'first_name',
-        'last_name',
-        'email',
+        'account',
         'address',
         'postal_code',
         'city',

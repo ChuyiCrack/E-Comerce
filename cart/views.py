@@ -42,7 +42,13 @@ def cart_detail(request):
         )
     else:
         recommended_products = []
-    return render(request, 'cart/detail.html', {'cart': cart ,'coupon_apply_form':coupon_apply_form ,'recommended_products': recommended_products})
+    context = {
+        'cart': cart ,
+        'coupon_apply_form':coupon_apply_form ,
+        'recommended_products': recommended_products,
+        'authenticated':request.user.is_authenticated
+        }
+    return render(request, 'cart/detail.html',context)
 
 @require_POST
 def incrementDecrementCart(request,product_id):

@@ -31,6 +31,7 @@
     
     <div id="subheader">
       <div class="cart">
+        <div>
           {% with total_items=cart|length %}
           {% if total_items > 0 %}
           {% translate "Your cart" %}:
@@ -45,6 +46,14 @@
             {% translate "Your cart is empty." %}
           {% endif %}
         {% endwith %}
+        </div>
+        {% if user.is_authenticated %}
+          <a href="{% url 'authuser:profile' %}" class="Profile">
+            <img src="/static/img/user.png" alt="">
+          </a>
+        {% else %}
+          <a class="logginButton" href="{% url "authuser:login" %}">Login</a>
+        {% endif %}
       </div>
     </div>
     <div id="content">
