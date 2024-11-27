@@ -157,7 +157,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 CART_SESSION_ID = 'cart'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 CELERY_BROKER_URL = 'amqp://guest:guest@127.0.0.1:5672//' #Needs to put the url of the broker
 
@@ -172,3 +171,11 @@ REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 REDIS_DB = 1
 
+
+#ALL about the email sender
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'chutoxibe@gmail.com'  # Replace with your project email
+EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')  # Use app password or Gmail password

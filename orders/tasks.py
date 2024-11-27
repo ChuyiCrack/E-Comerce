@@ -16,6 +16,7 @@ def order_created(order_id):
         f'Your order ID is {order.id}.'
     )
     mail_sent = send_mail(
-        subject, message, 'admin@myshop.com', [order.account.email]
+        subject, message, 'chutoxibe@gmail.com', [order.account.email]
     )
+    print('gg')
     return mail_sent

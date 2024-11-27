@@ -447,8 +447,279 @@ form div.field {
     color: #fff;
 }
 
-
+/* Profile SEction */
 
 .orderBox{
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px 50px 20px;
+    justify-content: center;
+    width: 100%;
+    border: 2px solid #888888;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.mainOrderBox{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+
+.mainBox{
+    display: flex;
+    flex-direction: row;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+    color: #FFF;
+    background-color: #5188ad;
+    border-bottom: 2px solid #888888;
+    flex-direction: row;
+    transition: background-color 0.3s;
+}
+
+.bodyOrder{
+    display: flex;
+    justify-content: space-between;
+}
+
+.statusBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.statusBox p{
+    margin: 0;
+}
+
+.status{
+    display: flex;
+    align-items: center;
+}
+
+.payButtonProfile{
+    margin-left: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #5486b4;
+    color: #fff;
+    transition: .3s;
+}
+
+.payButtonProfile:hover{
+    background-color: #286d9c;
+}
+
+.deleteOrder{
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+
+}
+
+.deleteOrder button{
+    border: none;
+    border-radius: 5px;
+    background-color:#f84950;
+    cursor: pointer;
+    transition: .3s;
+    color: #eeeded;
+    
+}
+
+.deleteOrder button:hover{
+    background-color:#d83843;
+    color: #fff;
+}
+
+.innerHeaderBox{
+    display: flex;
+    flex-direction: row;
+}
+
+.circleStatus{
+    width: 15px;
+    height: 15px;
+    border-radius: 40px;
+    margin-right: 5px;
+}
+
+.paid{
+    background-color: greenyellow;
+}
+
+.noPaid{
     background-color: red;
+}
+
+.orderBox:hover .header{
+    background-color:#286d9c;
+}
+
+.header p{
+    margin: 10px;
+}
+
+.imagesOrder{
+    display: flex;
+}
+
+#productImage{
+    width: 100px;
+}
+
+.titles{
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.titles h2{
+    width: 50%;
+}
+
+.boxForm{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 0 auto;
+    width: 40%;
+    align-items: center;
+}
+.editForm{
+    width: 50%;
+}
+
+.extraProduct{
+    margin: auto 0;
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+}
+
+.plusSign{
+    font-size: 70px;
+    font-weight: 600;
+    width: fit-content;
+    height: fit-content;
+    content: "\002B";
+    margin-bottom: 15px;
+}
+
+
+/* test */
+.form-container {
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+label {
+    background: white;
+    padding: 0 5px;
+    color: #555;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input.form-control,
+textarea.form-control {
+    text-align: center;
+    width: 100%;
+    padding: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+input.form-control:focus,
+textarea.form-control:focus {
+    border-color: #5993BB;
+}
+
+input.form-control:focus + label,
+textarea.form-control:focus + label,
+input.form-control:not(:placeholder-shown) + label,
+textarea.form-control:not(:placeholder-shown) + label {
+    top: -20px;
+    font-size: 12px;
+    color: #5993BB;
+}
+
+.editFormButton{
+    width: 100%;
+    background: #5993BB;
+    margin-top: 15px;
+    padding: 12px 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.editFormButton:hover {
+    background: #286d9c;
+}
+
+#emailEditForm{
+    background-color: #e2e1e1;
+    font-weight: 500;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 5px;
+    margin: 0;
+    border: 1px solid #c0c0c0;
+    text-align: center;
+}
+
+.logOut{
+    background-color: rgb(249, 45, 45);
+}
+
+.logOut:hover{
+    background-color: rgb(200, 38, 38);
+}
+
+.noOrderBox img{
+    
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+}
+
+.noOrderBox a{
+    font-size: 20px;
+    margin: 10px;
+}
+
+.noOrderBox{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#titleProfile{
+    text-align: center;
 }
