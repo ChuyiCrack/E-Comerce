@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-16 16:36-0600\n"
-"PO-Revision-Date: 2024-11-19 18:44+0000\n"
-"Last-Translator:   <>\n"
+"POT-Creation-Date: 2024-11-27 11:50-0600\n"
+"PO-Revision-Date: 2024-11-27 18:24+0000\n"
+"Last-Translator: Anonymous User <chutoxibe@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -19,27 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: orders/models.py:9
-msgid "first name"
-msgstr "Primer Nombre"
-
-#: orders/models.py:10
-msgid "last_name"
-msgstr "Apellido"
-
 #: orders/models.py:11
-msgid "email"
-msgstr "correo"
-
-#: orders/models.py:12
 msgid "address"
 msgstr "Direccion"
 
-#: orders/models.py:13
+#: orders/models.py:12
 msgid "postal_code"
 msgstr "Codigo Postal"
 
-#: orders/models.py:14
+#: orders/models.py:13
 msgid "city"
 msgstr "Ciudad"
 
@@ -60,6 +48,70 @@ msgstr "Total"
 msgid "Place order"
 msgstr "Realizar Orden"
 
+#: orders/templates/orders/order/orderDetail.html:9
+msgid "Print Order"
+msgstr "Imprimir Orden"
+
+#: orders/templates/orders/order/orderDetail.html:15
+msgid "Updated"
+msgstr "Actualizado"
+
+#: orders/templates/orders/order/orderDetail.html:19
+msgid "Customer"
+msgstr "Cliente"
+
+#: orders/templates/orders/order/orderDetail.html:27
+#| msgid "address"
+msgid "Address"
+msgstr "Dirección"
+
+#: orders/templates/orders/order/orderDetail.html:34
+msgid "Total amount"
+msgstr "Cantidad Total"
+
+#: orders/templates/orders/order/orderDetail.html:38
+msgid "Status"
+msgstr "Estado"
+
+#: orders/templates/orders/order/orderDetail.html:44
+msgid "Items bought"
+msgstr "Productos Comprados"
+
+#: orders/templates/orders/order/orderDetail.html:48
+msgid "Product"
+msgstr "Producto"
+
+#: orders/templates/orders/order/orderDetail.html:49
+msgid "Price"
+msgstr "Precio"
+
+#: orders/templates/orders/order/orderDetail.html:50
+msgid "Quantity"
+msgstr "Cantidad"
+
+#: orders/templates/orders/order/orderDetail.html:70
+#, python-format
+msgid ""
+"\n"
+"              Coupon: <b>%(coupoun)s</b> (%(discount)s%% off)\n"
+"            "
+msgstr ""
+"\n"
+"Cupon: <b>%(coupoun)s</b> (%(discount)s%% menos)"
+
 #: orders/urls.py:6
 msgid "create/"
 msgstr "crear/"
+
+#: orders/urls.py:7
+msgid "order/<int:orderId>"
+msgstr "orden/<int:orderId>"
+
+#~ msgid "first name"
+#~ msgstr "Primer Nombre"
+
+#~ msgid "last_name"
+#~ msgstr "Apellido"
+
+#~ msgid "email"
+#~ msgstr "correo"

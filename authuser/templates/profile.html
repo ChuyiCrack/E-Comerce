@@ -11,17 +11,18 @@
 </head>
     {% block content %}
     <body>
-    <h1>
+    <h1 id="titleProfile">
             {% blocktrans with name=user.name lastName=user.lastName %}
                 Hello, {{name}} {{lastName}}
             {% endblocktrans %}
     </h1>
     <div class="titles">
-        <h2>{% translate "Your Orders" %}</h2>
+        <h2>{% if orders|length  > 0 %} {% translate "Your Orders" %} {% else %} {% translate "You have not placed any order" %} {% endif %}</h2>
         <h2 id="account">{% translate "Account" %}</h2>
     </div>
         <div class="mainBox">
             <div class="mainOrderBox">
+                {% if orders|length  > 0 %}
                 {% for order in orders %}
                     <a href="{% url 'orders:orderDetail' order.0.id %}" class="orderBox">
                         <div class="header">
@@ -77,6 +78,12 @@
                         </div>
                     </a>
                 {% endfor %}
+                {% else %}
+                <div class="noOrderBox">
+                    <a class="got To Shop" href="">{% translate 'Go to shoop' %}</a>
+                    <img src="/static/img/slinky.gif" alt="">
+                </div>
+                {% endif %}
             </div>
         <div class="boxForm">
             <form class="editForm" method="post">
@@ -85,6 +92,7 @@
                 <p title="{% translate "You can't modify your email" %}" id="emailEditForm">{{user.email}}</p>
                 {{editForm}}
                 <button class="editFormButton" type="submit" name="editAccount">Edit</button>
+                <button class="editFormButton logOut" type="submit" name="logOut">LogOut</button>
             </form>
         </div>
     </div>

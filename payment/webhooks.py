@@ -6,6 +6,7 @@ from orders.models import Order
 from django.shortcuts import get_object_or_404
 from shop.models import Product
 from shop.recommender import Recommender
+from orders.tasks import order_created
 
 @csrf_exempt
 def stripe_webhook(request):
@@ -22,7 +23,6 @@ def stripe_webhook(request):
     except stripe.error.SignatureVerificationError as e:
         # Invalid signature
         return HttpResponse(status=400)
-    print(event.type)
     if event.type == 'checkout.session.completed':
         session = event.data.object
         if (session.mode == 'payment' and session.payment_status == 'paid'
@@ -31,7 +31,7 @@ def stripe_webhook(request):
             # mark order as paid
             order.stripe_id = session.payment_intent
             order.paid = True
-            
+            order_created.delay(order.id) #You call the delay() method of the task to execute it asynchronously. The task will be added to the message queue and executed by the Celery worker as soon as possible.
             # save items bought for product recommendations
             product_ids = order.items.values_list('product_id')
             products = Product.objects.filter(id__in=product_ids)

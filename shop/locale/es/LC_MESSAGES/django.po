@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-19 12:41-0600\n"
-"PO-Revision-Date: 2024-11-19 18:42+0000\n"
-"Last-Translator:   <>\n"
+"POT-Creation-Date: 2024-11-27 11:50-0600\n"
+"PO-Revision-Date: 2024-11-27 18:26+0000\n"
+"Last-Translator: Anonymous User <chutoxibe@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -19,19 +19,19 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: shop/models.py:6 shop/models.py:30 shop/models.py:36
-msgid "Name"
-msgstr "Nombre"
-
 #: shop/templates/shop/base.html:7 shop/templates/shop/base.html:13
 msgid "My shop"
 msgstr "Mi tienda"
 
-#: shop/templates/shop/base.html:19
+#: shop/templates/shop/base.html:18
+msgid "Language"
+msgstr "Lenguaje"
+
+#: shop/templates/shop/base.html:37
 msgid "Your cart"
 msgstr "Tu carrito"
 
-#: shop/templates/shop/base.html:21
+#: shop/templates/shop/base.html:39
 #, python-format
 msgid ""
 "\n"
@@ -42,9 +42,13 @@ msgid_plural ""
 "                  %(items)s items, $%(total)s\n"
 "            "
 msgstr[0] ""
+"\n"
+"%(items)s Producto $%(total)s"
 msgstr[1] ""
+"\n"
+"%(items)s Productos $%(total)s"
 
-#: shop/templates/shop/base.html:28
+#: shop/templates/shop/base.html:46
 msgid "Your cart is empty."
 msgstr "Tu carrito esta vacio"
 
@@ -53,7 +57,6 @@ msgid "Already in your cart"
 msgstr "Ya en tu carrito"
 
 #: shop/templates/shop/product/detail.html:20
-#| msgid "Your cart"
 msgid "Go to cart"
 msgstr "Ir a carrito"
 
@@ -65,10 +68,17 @@ msgstr "Agregar a Carrito"
 msgid "People who bought this also bought"
 msgstr "Personas que compraro esto tambien compraron"
 
-#: shop/templates/shop/product/list.html:8
+#: shop/templates/shop/product/list.html:9
 msgid "Categories"
 msgstr "Categorias"
 
-#: shop/templates/shop/product/list.html:11
+#: shop/templates/shop/product/list.html:12
 msgid "All"
 msgstr "Todo"
+
+#: shop/templates/shop/product/list.html:23
+msgid "Products"
+msgstr "Productos"
+
+#~ msgid "Name"
+#~ msgstr "Nombre"

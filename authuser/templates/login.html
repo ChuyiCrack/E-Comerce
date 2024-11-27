@@ -1,118 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load static i18n %}
+{% block login %}
 <head>
-    {% load static %}
-    <!-- metas -->
-    <meta charset="utf-8">
-    <meta name="author" content="Chitrakoot Web" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="keywords" content="admin,dashboard" />
-    <meta name="description" content="Crizal - Responsive Admin Dashboard Template" />
-
-    <!-- title  -->
-    <title>Crizal - Responsive Admin Dashboard Template</title>
-
-    <!-- favicon -->
-    <link rel="shortcut icon" href="img/logos/favicon.png">
-    <link rel="apple-touch-icon" href="img/logos/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/logos/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/logos/apple-touch-icon-114x114.png">
-
-    <!-- common plugins -->
-    <link rel="stylesheet" href="{% static 'plugins/bootstrap.min.css ' %}" />
-    <link rel="stylesheet" href="{% static 'plugins/font-awesome.min.css ' %}" />
-    <link rel="stylesheet" href="{% static 'plugins/style.css' %}" />
-    <link rel="stylesheet" href="{% static 'plugins/default.css' %}" />
-    <link rel="stylesheet" href="{% static 'plugins/switchery.min.css' %}" />
-
-    <!-- custom css -->
-     
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-
-    <!-- custom css -->
-    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{% static 'css/loginSignup.css' %}">
 </head>
-
-<body>
-    
-    <!-- PAGE LOADING
-    ================================================== -->
-    <div id="preloader"></div>
-
-    <!-- PAGE CONTAINER
-    ================================================== -->
-    
-    
-    <!-- {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li class="{{ message.tags }}">{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %} -->
-
-    
-    <div class="page-container">
-
-        <!-- PAGE INNER
-        ================================================== -->
-        <div class="page-inner login-page">
-            <div id="main-wrapper" class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-6 login-box">
-                        <h4 class="login-title">Sign in to your account</h4>
-                        <form method="post">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" name="email">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-                            </div>
-                            <button type="submit" href="index.html" class="btn btn-primary">Login</button>
-                            <a href="{% url "authuser:register" %}" class="btn btn-outline-primary">Register</a>
-                            <br>
-                            <a href="index.html" class="forgot-link">Forgot password?</a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <a href="{% url 'authuser:login' %}"><h2 class="active"> {% translate 'Log In' %}</h2></a>
+      <a href="{% url 'authuser:register' %}"><h2 class="inactive underlineHover">{% translate 'Sign Up' %}</h2></a>
+  
+  
+      <!-- Login Form -->
+      <form method="post">
+        {% csrf_token %}
+        <input type="text" id="email" class="fadeIn second" name="email" placeholder="email">
+        <input type="text" id="password" class="fadeIn third" name="password" placeholder="{% translate 'password' %}">
+        <input type="submit" class="fadeIn fourth" value="{% translate 'Log in' %}">
+      </form>
+  
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="/">{% translate 'Go Back to Store' %}</a>
+      </div>
     </div>
-
-    <!-- SCROLL TO TOP
-    ================================================== -->
-    <a href="#!" class="scroll-to-top"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
-
-    <!-- all js include start -->
-
-    <!-- jQuery -->
-    <script src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
-
-    <!-- bootstrap -->
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-
-    <!-- slimscroll -->
-    <script src=" {% static 'js/jquery.slimscroll.min.js' %}"></script>
-
-    <!-- uniform -->
-    <script src="{% static 'js/jquery.uniform.standalone.js ' %}"></script>
-
-    <!-- switchery -->
-    <script src="{% static 'js/switchery.min.js' %}"></script>
-
-    <!-- theme core scripts -->
-    <script src="{% static 'js/main.js' %}"></script>
-
-    <!-- custom js -->
-    <script src="{% static 'js/custom.js' %}"></script>
-
-    <!-- all js include end -->
-
-</body>
-</html>
+  </div>
+{% endblock %}

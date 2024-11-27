@@ -8,16 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-19 12:41-0600\n"
-"PO-Revision-Date: 2024-11-19 18:08+0000\n"
-"Last-Translator:   <>\n"
+"POT-Creation-Date: 2024-11-27 11:50-0600\n"
+"PO-Revision-Date: 2024-11-27 17:53+0000\n"
+"Last-Translator: Anonymous User <chutoxibe@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
-"1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
 #: cart/forms.py:11 cart/templates/cart/detail.html:13
@@ -54,11 +53,11 @@ msgstr "Cupon"
 
 #: cart/templates/cart/detail.html:61
 msgid "off"
-msgstr ""
+msgstr "menos"
 
 #: cart/templates/cart/detail.html:82
 msgid "People who bought this also bought"
-msgstr ""
+msgstr "Personas que compraron esto tambien compraron"
 
 #: cart/templates/cart/detail.html:99
 msgid "Apply"
@@ -68,6 +67,6 @@ msgstr "Aplicar"
 msgid "Continue shopping"
 msgstr "Continuar Comprando"
 
-#: cart/templates/cart/detail.html:106
+#: cart/templates/cart/detail.html:107
 msgid "Checkout"
 msgstr "Pagar"

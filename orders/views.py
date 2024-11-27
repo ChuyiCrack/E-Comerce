@@ -33,7 +33,7 @@ def order_create(request):
             # clear the cart
             cart.clear()
             # launch asynchronous task
-            order_created.delay(order.id) #You call the delay() method of the task to execute it asynchronously. The task will be added to the message queue and executed by the Celery worker as soon as possible.
+            
             # set the order in the session
             request.session['order_id'] = order.id
             # redirect for payment

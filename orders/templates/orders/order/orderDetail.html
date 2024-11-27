@@ -6,17 +6,17 @@
   <ul class="object-tools">
     <li>
       <a href="#" onclick="window.print();">
-        Print order
+        {% translate 'Print Order' %}
       </a>
     </li>
   </ul>
   <table>
     <tr>
-      <th>Created</th>
-      <td>{{ order.created }}</td>
+      <th>{% translate 'Updated' %}</th>
+      <td>{{ order.updated }}</td>
     </tr>
     <tr>
-      <th>Customer</th>
+      <th>{% translate 'Customer' %}</th>
       <td>{{ order.account.name}} {{ order.account.lastName }}</td>
     </tr>
     <tr>
@@ -24,30 +24,30 @@
       <td><a href="mailto:{{ order.email }}">{{ order.account.email }}</a></td>
     </tr>
     <tr>
-      <th>Address</th>
+      <th>{% translate 'Address' %}</th>
     <td>
       {{ order.address }},
       {{ order.postal_code }} {{ order.city }}
     </td>
     </tr>
     <tr>
-      <th>Total amount</th>
+      <th>{% translate 'Total amount' %} </th>
       <td>${{ order.get_total_cost }}</td>
     </tr>
     <tr>
-      <th>Status</th>
+      <th>{% translate 'Status' %}</th>
       <td>{% if order.paid %}Paid{% else %}Pending payment{% endif %}</td>
     </tr>
   </table>
 </div>
 <div class="module">
-  <h2>Items bought</h2>
+  <h2>{% translate 'Items bought' %}</h2>
   <table style="width:100%">
     <thead>
       <tr>
-        <th>Product</th>
-        <th>Price</th>
-        <th>Quantity</th>
+        <th>{% translate 'Product' %}</th>
+        <th>{% translate 'Price' %}</th>
+        <th>{% translate 'Quantity' %}</th>
         <th>Total</th>
       </tr>
     </thead>
@@ -60,6 +60,20 @@
           <td class="num">${{ item.get_cost }}</td>
         </tr>
       {% endfor %}
+      <tr class="row">
+        <td colspan="3">SubTotal</td>
+        <td class="num">${{ order.get_total_cost_before_discount }}</td>
+      </tr>
+      {% if order.coupon %}
+        <tr class="row">
+          <td colspan="3">
+            {% blocktrans with coupoun=order.coupon.code discount=order.coupon.discount %}
+              Coupon: <b>{{coupoun}}</b> ({{discount}}% off)
+            {% endblocktrans %}
+          </td>
+          <td style="color: red;" class="num">-${{ order.get_discount }}</td>
+        </tr>
+      {%endif %}
       <tr class="total">
         <td colspan="3">Total</td>
         <td class="num">${{ order.get_total_cost }}</td>

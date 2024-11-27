@@ -1,18 +1,36 @@
 from django import forms
 from .models import User
+from django.utils.translation import gettext_lazy as _
 
 class UserProfileForm(forms.ModelForm):
-    confirm_password = forms.CharField(
-        widget=forms.PasswordInput,
-        label="Confirm Password"
+    name = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': _('Name')}),
+        label=""
     )
 
+    lastName = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': _('Last Name')}),
+        label=""
+    )
+
+    email = forms.EmailField(
+        widget=forms.TextInput(attrs={'placeholder': 'email'}),
+        label=""
+    )
+    
+    password = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': _('Password')}),
+        label=""
+    )
+
+    confirm_password = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': _('Confirm your password')}),
+        label=""
+    )
+    
     class Meta:
         model = User
         fields = ['name','lastName', 'email', 'password']
-        widgets = {
-            'password': forms.PasswordInput(),
-        }
 
     def clean(self):
         cleaned_data = super().clean()

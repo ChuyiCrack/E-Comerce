@@ -617,6 +617,7 @@ form div.field {
     margin-bottom: 15px;
 }
 
+
 /* test */
 .form-container {
     max-width: 400px;
@@ -689,5 +690,36 @@ textarea.form-control:not(:placeholder-shown) + label {
     border-radius: 5px;
     margin: 0;
     border: 1px solid #c0c0c0;
+    text-align: center;
+}
+
+.logOut{
+    background-color: rgb(249, 45, 45);
+}
+
+.logOut:hover{
+    background-color: rgb(200, 38, 38);
+}
+
+.noOrderBox img{
+    
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+}
+
+.noOrderBox a{
+    font-size: 20px;
+    margin: 10px;
+}
+
+.noOrderBox{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#titleProfile{
     text-align: center;
 }

@@ -2,13 +2,14 @@ from django.shortcuts import render,redirect
 from authuser.models import User
 from orders.models import Order,OrderItem
 from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.auth import login,authenticate
+from django.contrib.auth import login,authenticate,logout
 from django.contrib import messages
 from .forms import UserProfileForm,EditAccount
 from django.contrib.auth.hashers import make_password
 from .decorators import unauthenticated_user
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def profileView(request):
     user = request.user
     allOrders = Order.objects.filter(account = user).order_by('-created').all()
@@ -33,6 +34,10 @@ def profileView(request):
         idOrder = request.POST['deleteOrder']
         Order.objects.get(id = idOrder).delete()
         return redirect('authuser:profile')
+    
+    elif 'logOut' in request.POST:
+        logout(request)
+        return redirect('shop:product_list')
         
     else:
         form = EditAccount(instance=user)

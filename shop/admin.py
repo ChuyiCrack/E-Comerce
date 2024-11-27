@@ -11,6 +11,7 @@ class CategoryAdmin(TranslatableAdmin):
 @admin.register(Product)
 class ProductAdmin(TranslatableAdmin):
     list_display = [
+        'id',
         'name',
         'slug',
         'price',
